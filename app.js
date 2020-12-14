@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('config');
 const http = require('http');
+const path = require('path');
 const cors = require('cors');
 const { routes } = require('./routes');
 
@@ -24,6 +25,13 @@ app.use(cors());
 routes.forEach((item) => {
   app.use(`/api/${item}`, require(`./routes/${item}`));
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express(path.join(__dirname, 'client', 'dist', 'spa')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'spa', 'index.html'));
+  });
+}
 
 // init app
 const PORT = config.get('port');

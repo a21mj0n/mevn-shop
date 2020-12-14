@@ -4,7 +4,7 @@
   "description": "fullstack vue app",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
+    "dev": "node app.js",
     "client:start": "yarn run start --prefix client",
     "client:build": "yarn run build --prefix client"
   },
