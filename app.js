@@ -8,7 +8,7 @@ const cors = require('cors');
 const { routes } = require('./routes');
 
 // connection to mongoDB
-mongoose.connect(config.get('mongoDBUrl'), {
+mongoose.connect(process.env.MONGO_DB_URI || config.get('mongoDBUrl'), {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
