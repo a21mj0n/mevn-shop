@@ -4,9 +4,12 @@
   "description": "fullstack vue app",
   "main": "app.js",
   "scripts": {
-    "dev": "node app.js",
-    "client:start": "yarn run start --prefix client",
-    "client:build": "yarn run build --prefix client"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "client:start": "cd client && yarn run start",
+    "client:build": "cd client && yarn run build",
+    "client:install": "cd client && yarn install",
+    "heroku-postbuild": "yarn run client:install && yarn run client:build"
   },
   "keywords": [
     "vue",
@@ -30,9 +33,9 @@
     "qs": "^6.9.4",
     "ramda": "^0.27.1"
   },
-  "proxy": "htttp://localhost:3000",
   "devDependencies": {
     "concurrently": "^5.3.0",
+    "lite-server": "^2.6.1",
     "nodemon": "^2.0.6"
   }
 }

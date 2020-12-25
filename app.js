@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // init app
-const PORT = config.get('port');
+const PORT = process.env.PORT || config.get('port');
 http.createServer({}, app).listen(PORT);
 
 console.log(`Server started on port ${PORT}`);
