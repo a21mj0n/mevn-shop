@@ -28,11 +28,13 @@ routes.forEach((item) => {
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/dist/spa'));
-
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/dist/spa', 'index.html'));
-  });
+  console.log('asdasd');
 }
+
+app.use(express.static('client/dist/spa'));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/dist/spa', 'index.html'));
+});
 
 
 // app.use(express(path.join(__dirname, 'client', 'dist', 'spa')));
