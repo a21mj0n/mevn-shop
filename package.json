@@ -9,8 +9,8 @@
     "client:start": "cd client && yarn run start",
     "client:build": "cd client && yarn run build",
     "client:install": "cd client && yarn install",
-    "client:quasar-build": "yarn global add @quasar/cli",
-    "heroku-postbuild": "yarn run client:install && yarn run client:build"
+    "client:quasar-build": "yarn add @quasar/cli",
+    "heroku-postbuild": "yarn run client:install && yarn run client:quasar-build  && yarn run client:build"
   },
   "keywords": [
     "vue",
